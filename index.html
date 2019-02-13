@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="simulatedEcologyApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="this is an exact replication of life and the world in general">
+    <meta name="keywords" content="life,world,ecology">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
+    <script src='components/angular/angular.js'></script>
+    <script src='components/angular-route/angular-route.js'></script>
+    <script src="components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="common/js/app.js"></script>
+    <script src="common/controllers/SimulationCtrl.js"></script>
+    <script src="common/js/simulationConfig.js"></script>
+    <link rel="stylesheet" type="text/css" href="common/css/simulatedEcology.css">
+    <base href="/">
+
+    <title>life and the world</title>
+</head>
+<body class="" ng-controller="simulationCtrl">
+    <div class="container">
+
+      <h1 class="logo-container"><a href="#" class="simulation-logo">simulated ecology</a></h1>
+
+
+      <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 reduced-mobile-top-margin-adjusted">
+
+          <a class="to-detail-link" ng-click="showTargetLines = !showTargetLines">
+            <span ng-if="!showTargetLines">show</span> 
+            <span ng-if="showTargetLines">hide</span> 
+            target lines
+          </a>
+          <br>
+          <a class="to-detail-link" ng-click="showAnimalInfo = !showAnimalInfo">
+            <span ng-if="!showAnimalInfo">show</span> 
+            <span ng-if="showAnimalInfo">hide</span> 
+            animal info
+          </a>
+          <br>
+          <a class="to-detail-link" ng-click="spawnAnimal()">
+            spawn animal
+          </a>
+          <br>
+          <a class="to-detail-link" ng-click="spawnIllness()">
+            spawn illness
+          </a>
+
+          <div id="simulationShell" class="scrollbox-shell simulation" ng-class="{'shell-border-blue': shellColor == 1, 'shell-border-grey': shellColor == 2, 'shell-border-red': shellColor == 3, 'shell-border-green': shellColor == 4}">
+
+            <svg xmlns="http://www.w3.org/2000/svg" ng-attr-width={{svgAreaWidth}} ng-attr-height={{svgAreaHeight}}>
+                <line ng-if="showTargetLines && animalElement.movementTarget" ng-repeat="animalElement in simulationWorld.animalArray" ng-attr-x1={{animalElement.position.x+animalElement.size/2}} ng-attr-y1={{animalElement.position.y+animalElement.size/2}} ng-attr-x2={{animalElement.movementTarget.position.x}} ng-attr-y2={{animalElement.movementTarget.position.y}} style="stroke:red;stroke-width:2" />
+
+                <polygon ng-repeat="plantElement in simulationWorld.plantArray" ng-attr-points={{plantElement.pointsForSVG}} ng-attr-style={{plantElement.appearance}} />
+                <polygon ng-repeat="animalElement in simulationWorld.animalArray" ng-attr-points={{animalElement.pointsForSVG}} ng-attr-style={{animalElement.appearance}} />
+                <polygon ng-repeat="particleEffectsElement in simulationWorld.particleEffectsArray" ng-attr-points={{particleEffectsElement.pointsForSVG}} ng-attr-style={{particleEffectsElement.appearance}} />
+                
+                <text ng-if="showAnimalInfo" ng-repeat="animalElement in simulationWorld.animalArray" ng-attr-x={{animalElement.position.x}} ng-attr-y={{(animalElement.position.y-45)}} fill="black" font-size="10">
+                  <tspan>shyness: {{animalElement.shyness}}</tspan>
+                  <tspan ng-attr-x={{animalElement.position.x}} dy="10">
+                    energy: {{animalElement.energy}}
+                  </tspan>
+                </text>
+                <text ng-if="showAnimalInfo" ng-repeat="animalElement in simulationWorld.animalArray" ng-attr-x={{animalElement.position.x}} ng-attr-y={{(animalElement.position.y-25)}} fill="black" font-size="10">
+                  <tspan>resilience: {{animalElement.resilience}}</tspan>
+                  <tspan ng-attr-x={{animalElement.position.x}} dy="10">is ill: {{animalElement.isIll}}</tspan>
+                  <tspan ng-attr-x={{animalElement.position.x}} dy="10">movement speed: {{animalElement.movementSpeed}}</tspan>
+                </text>
+              </svg>
+
+          </div>
+      </div>
+
+
+</body>
+</html>

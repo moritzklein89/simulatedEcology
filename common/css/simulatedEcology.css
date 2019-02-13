@@ -1,0 +1,154 @@
+.scrollbox-shell {
+    width: 100%;
+    margin: 2em auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: 5px solid silver;
+    border-radius: 1px;
+    padding: 1em;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    display:none;
+}
+
+.grey-bg{
+    background-color: whitesmoke;
+}
+
+.scrolling-area{
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height: 93%;
+}
+
+.scrolling-area-with-footer{
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 84%;
+}
+
+.simulation-logo:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.logo-container{
+    margin-top: 0.25em;
+    text-align: center;
+}
+
+.scrollbox-shell.news {
+    height: 30em;
+}
+.scrollbox-shell.topics {
+    height: 20em;
+}
+.scrollbox-shell.events {
+    height: 35em;
+}
+.scrollbox-shell.material {
+    height: 25em;
+}
+
+.scrollbox-shell.simulation{
+    min-height: 450px;
+    text-align: justify;
+    margin-top: 42px;
+    font-size: 0.95em;
+    -moz-hyphens: auto;
+    -o-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto; 
+}
+
+.to-detail-link{
+    color: black;
+    cursor:pointer;
+}
+
+.to-detail-link:hover{
+    color: black;
+    text-decoration: none;
+}
+
+@media (min-width: 769px){
+    .logo-container{
+        margin-top: 1em;
+        margin-bottom: 0.25em;
+        text-align: center;
+    }
+
+    .reduced-padding-right{
+        padding-right: 3px;
+    }
+
+    .reduced-padding-left{
+        padding-left: 3px;
+    }
+
+    .to-detail-link:hover::before{
+        content:'>';
+        position: absolute;
+        left: -0px;
+    }
+
+    .simulation-logo{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 60px;
+        font-style: italic;
+        color:black;
+    }
+
+    .simulation-logo:hover{
+        font-style: normal;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+@media (max-width: 768px){
+    .reduced-mobile-top-margin{
+        margin-top: -1.5em;
+    }
+    .reduced-mobile-top-margin-adjusted{
+        margin-top: -1.6em;
+    }
+    .to-detail-link{
+        color: black;
+        -moz-hyphens: auto;
+        -o-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto; 
+    }
+    .h5-mobile{
+        font-size: 1.1em;
+    }
+
+    .simulation-logo{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 50px;
+        font-style: italic;
+        color:black;
+    }
+}
+
+
+.shell-border-blue{
+    border: 5px solid blue;
+}
+
+.shell-border-grey{
+    border: 5px solid silver;
+}
+
+.shell-border-green{
+    border: 5px solid lawngreen;
+}
+
+.shell-border-red{
+    border: 5px solid red;
+}
